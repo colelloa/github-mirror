@@ -5,12 +5,9 @@ user="ghtorrent"
 passwd=""
 host="localhost"
 db="ghtorrent"
-out="dump"
-skipArchive=false
-skipTables=""
 
 ts=`date +%Y-%m-%d`
-dumpName=`echo mysql-$ts.tar.gz`
+dumpName=`postgresql-$ts.tar.gz`
 userPrvName=`echo users-private-$ts`
 
 usage()
@@ -19,7 +16,7 @@ usage()
   echo "          [-h dbhost] [-d database ] [-o output_dir]"
   echo "          [-a archive_name ] [-f skip_tables] [-c skip_archive]"
   echo
-  echo "Dump a MySQL database into CSV files per table"
+  echo "Dump a PostgreSQL database into CSV files per table"
   echo "output_dir must be writable by the mysqld user and must be an absolute path"
   echo "    -u database user (default: $user)"
   echo "    -p database passwd (default: $passwd)"
@@ -29,7 +26,6 @@ usage()
   echo "    -o intermediate output dir (default: $out)"
   echo "    -f file with table names to skip (default: $skipTables)"
   echo "    -c skip creating .tar.gz archive (default: $skipArchive)"
-  echo "    -a archive name (default: $dumpName)"
 }
 
 if [ -z $1 ]
